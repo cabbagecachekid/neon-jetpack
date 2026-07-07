@@ -1,11 +1,11 @@
 ---
-name: using-copy-desk
-description: Use when any copy-desk task begins — reviewing, polishing, or shipping human-facing writing or web pages, or protecting creative work. Routes to the right copy-desk skill (line-edit, ai-written-check, cringe-check, full-review, ux-web-design-review, copyright-creative-work) and defines how they chain, so the right depth of review runs in the right order.
+name: using-neon-jetpack
+description: Use when any writing, review, or shipping task begins — reviewing, polishing, or shipping human-facing writing or web pages, or protecting creative work. Routes to the right neon-jetpack skill (line-edit, ai-written-check, cringe-check, full-review, ux-web-design-review, copyright-creative-work) and defines how they chain, so the right depth of review runs in the right order.
 ---
 
-# Using copy-desk
+# Using neon-jetpack
 
-copy-desk is a team of six skills that take a piece of human-facing work from draft to shipped: polish the sentences, strip machine tells, fix the tone, verify the claims, check the page it lives on, and protect it if it's creative work. This skill is the dispatcher — read it, pick the right skill(s), and run them in order.
+neon-jetpack is a team of six skills that take a piece of human-facing work from draft to shipped: polish the sentences, strip machine tells, fix the tone, verify the claims, check the page it lives on, and protect it if it's creative work. This skill is the dispatcher — read it, pick the right skill(s), and run them in order.
 
 ## The routing table
 

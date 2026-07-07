@@ -108,6 +108,6 @@ or reorder sections — if a section is empty, say so explicitly.
 
 ## Composition
 
-Pairs with the review skills in the `copy-desk` pack: this skill judges whether web copy is *scannable and usable*; `ai-written-check` and `full-review` judge whether it's *honest and human-sounding*. Run both for copy going live. The `references/` corpus is designed to be reused by future UX skills, so a later "UX principles" bundle can build on it without restating principles.
+Pairs with the review skills in the `neon-jetpack` pack: this skill judges whether web copy is *scannable and usable*; `ai-written-check` and `full-review` judge whether it's *honest and human-sounding*. Run both for copy going live. The `references/` corpus is designed to be reused by future UX skills, so a later "UX principles" bundle can build on it without restating principles.
 
 When a source is dated or a principle is commonly misapplied (Miller's 7±2 is the classic example), the corpus files flag it — carry that caveat into the review rather than smoothing it over.

@@ -5,7 +5,7 @@ description: Runs a structured multi-pass review of human-facing professional co
 
 # Full Review
 
-A disciplined, multi-pass review for high-stakes human-facing copy — resumes, cover letters, portfolio pages, case studies, proposals, bios. This is the orchestrator of the `copy-desk` pack: it runs the full process and **delegates** the two focused checks (`ai-written-check`, `cringe-check`) rather than restating them, then adds the passes only it owns.
+A disciplined, multi-pass review for high-stakes human-facing copy — resumes, cover letters, portfolio pages, case studies, proposals, bios. This is the orchestrator of the `neon-jetpack` pack: it runs the full process and **delegates** the two focused checks (`ai-written-check`, `cringe-check`) rather than restating them, then adds the passes only it owns.
 
 Use it at **any** stage of refining copy with AI, not only the final pass — any time you've drafted, expanded, or edited something with Claude and want to make sure the result still says what you meant and claims only what's true.
 
@@ -46,4 +46,4 @@ If the author pushes back with feedback you think weakens the writing, say so an
 
 ## Composition
 
-Passes 1 and 4 are the `ai-written-check` and `cringe-check` skills — install the `copy-desk` pack together for the complete review. `references/PASSES.md` carries the full detail for the four passes this skill owns (2, 3, 5, 6) plus a brief fallback for 1 and 4 if those skills aren't present, so a review can still run standalone.
+Passes 1 and 4 are the `ai-written-check` and `cringe-check` skills — install the `neon-jetpack` pack together for the complete review. `references/PASSES.md` carries the full detail for the four passes this skill owns (2, 3, 5, 6) plus a brief fallback for 1 and 4 if those skills aren't present, so a review can still run standalone.

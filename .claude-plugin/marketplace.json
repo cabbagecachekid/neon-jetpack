@@ -1,13 +1,13 @@
 {
-  "name": "copy-desk",
+  "name": "neon-jetpack",
   "owner": {
     "name": "Caitlin Nielson"
   },
   "plugins": [
     {
-      "name": "copy-desk",
+      "name": "neon-jetpack",
       "source": "./",
-      "description": "A copy-desk for AI-assisted work: polish sentences, strip machine tells, fix tone, verify claims, review page UX, and protect creative work before it ships.",
+      "description": "A jetpack for AI-assisted writing: polish sentences, strip machine tells, fix tone, verify claims, review page UX, and protect creative work before it ships.",
       "version": "0.1.0"
     }
   ]

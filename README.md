@@ -1,14 +1,14 @@
-# copy-desk
+# neon-jetpack
 
 A skill pack for Claude (Claude Code, claude.ai, and the Agent SDK) that works like a newspaper copy desk: a team of editors that takes your human-facing work from draft to shipped — and keeps AI-assisted writing **honest and yours**.
 
-It grew out of a real problem: while refining a resume and portfolio *with* AI, edits crept in that quietly inflated claims and sanded the author's voice into generic paste. copy-desk assumes the healthy case — you're collaborating with Claude on your own writing — and makes sure the result still says what you meant, claims only what's true, and sounds like you.
+It grew out of a real problem: while refining a resume and portfolio *with* AI, edits crept in that quietly inflated claims and sanded the author's voice into generic paste. neon-jetpack assumes the healthy case — you're collaborating with Claude on your own writing — and makes sure the result still says what you meant, claims only what's true, and sounds like you.
 
 ## The skills
 
 | Skill | Job | Say |
 |-------|-----|-----|
-| **using-copy-desk** | The dispatcher. Routes any writing/review task to the right skill and defines how they chain. | (loads automatically at task start) |
+| **using-neon-jetpack** | The dispatcher. Routes any writing/review task to the right skill and defines how they chain. | (loads automatically at task start) |
 | **line-edit** | Light-touch sentence polish: grammar, clarity, wordiness. Never a rewrite; hands back a clean version plus a list of judgment calls you can overrule. | "polish this," "proofread," "tighten this email" |
 | **ai-written-check** | Flags mechanical machine-authorship tells — em dashes, triple-lists, "not X but Y," engineered cadence, universal claims — each with a concrete rewrite. | "does this sound like AI?" |
 | **cringe-check** | Audits tone and positioning: solo-hero framing, JD parroting, prescribing a client's reality, overclaiming. | "does this sound cocky / try-hard?" |
@@ -29,7 +29,7 @@ It grew out of a real problem: while refining a resume and portfolio *with* AI, 
 
 ```
 /plugin marketplace add cabbagecachekid/custom-claude-skills
-/plugin install copy-desk@copy-desk
+/plugin install neon-jetpack@neon-jetpack
 ```
 
 **A la carte:** copy any folder under `skills/` into `~/.claude/skills/` (Claude Code) or upload it as a skill on claude.ai. Each skill stands alone; `full-review` falls back to built-in brief notes if the two checks aren't installed.
