@@ -7,7 +7,7 @@
     {
       "name": "neon-jetpack",
       "source": "./",
-      "description": "A jetpack for AI-assisted writing: polish sentences, strip machine tells, fix tone, verify claims, review page UX, and protect creative work before it ships.",
+      "description": "A jetpack for AI-assisted writing: polish sentences, strip machine tells, fix tone, verify claims, review page UX, map user journeys, and protect creative work before it ships.",
       "version": "0.1.0"
     }
   ]
