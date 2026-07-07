@@ -1,6 +1,6 @@
 ---
 name: journey-map
-description: Use when the user wants to create, map, or visualize a user journey, customer journey, experience map, or milestone map — "map the journey," "build a journey map," "chart the experience from X to Y," or any request to represent a user's progression through a product over time. Also use when converting research findings, interview synthesis, or funnel data into a journey visualization, and even when the user's draft framing is screen-based ("map our onboarding screens"). Works in FigJam when a Figma MCP connection exists, and falls back to a portable markdown matrix when it doesn't.
+description: Use when the user wants to create, map, or visualize a user journey, customer journey, experience map, or milestone map — "map the journey," "build a journey map," "chart the experience from X to Y," or any request to represent a user's progression through a product over time. Also use when converting research findings, interview synthesis, or funnel data into a journey visualization, and even when the user's draft framing is screen-based ("map our onboarding screens"). Works in FigJam when a write-capable Figma connection exists (e.g. the claude.ai Figma connector), and falls back to a portable markdown matrix when it doesn't.
 ---
 
 # Milestone-Based Journey Map
@@ -34,13 +34,14 @@ As the milestone list comes in, apply the milestone test aloud: flag screens-in-
 
 ### 2. Pick the canvas
 
-Check what is actually available before promising a format:
+Check what is actually available before promising a format. The test is **write capability, not the word "Figma"**: look for tools that can *create* FigJam objects (files, sections, stickies, connectors).
 
-- **FigJam (via a Figma MCP connection)** — the full visual artifact. Use it when Figma MCP tools are present and authenticated in this session. If they exist but are unauthenticated, say so and offer the fallback rather than stalling.
-- **Markdown matrix (always available)** — the same spec rendered as a markdown table (milestones as columns, the eight rows), written to a file the user names. This is the default in Claude Code when no Figma connection exists. It round-trips: a markdown map can be rebuilt in FigJam later without re-interviewing.
+- **FigJam (via a Figma connection with creation tools)** — the full visual artifact. Available on claude.ai with the Figma connector, or any Figma MCP that exposes create/write tools.
+- **Figma connections that do NOT count:** Figma's "Dev Mode MCP Server" (common in Claude Code) is read-and-inspect only — `get_design_context`, `get_metadata`, screenshots, Code Connect. It cannot create anything. If the only Figma tools present are read-only, or they exist but are unauthenticated, treat FigJam as unavailable, say so plainly, and offer the fallback rather than stalling or attempting the build.
+- **Markdown matrix (always available)** — the same spec rendered as a markdown table (milestones as columns, the eight rows), written to a file the user names. This is the default when no write-capable Figma connection exists. It round-trips: a markdown map can be rebuilt in FigJam later without re-interviewing.
 - **Self-contained HTML one-pager** — only if the user asks for a shareable visual and FigJam is unavailable.
 
-State which canvas you're using and why in one sentence. Do not silently downgrade; if the user asked for FigJam and it's unreachable, tell them.
+State which canvas you're using and why in one sentence. Do not silently downgrade; if the user asked for FigJam and it's unreachable or read-only, tell them which situation they're in.
 
 ### 3. Confirm structure
 
