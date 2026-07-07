@@ -23,6 +23,10 @@ It grew out of a real problem: while refining a resume and portfolio *with* AI, 
 - Creative work headed for release finishes with `copyright-creative-work`.
 - Every skill obeys the same ground rules: sign-off before changes, never silently inflate a claim, preserve voice, and say which passes did *not* run.
 
+## The page
+
+A landing page for the pack lives in [`docs/`](docs/index.html). It is built for GitHub Pages ("deploy from branch", `/docs` folder) and goes live at `cabbagecachekid.github.io/custom-claude-skills/` once the repo is public and Pages is enabled.
+
 ## Install
 
 **As a Claude Code plugin** (all six skills at once):
