@@ -14,6 +14,7 @@ It grew out of a real problem: while refining a resume and portfolio *with* AI, 
 | **cringe-check** | Audits tone and positioning: solo-hero framing, JD parroting, prescribing a client's reality, overclaiming. | "does this sound cocky / try-hard?" |
 | **full-review** | The orchestrator for high-stakes copy (resumes, proposals, portfolios). Runs six passes, delegating to the two checks above, plus honesty/anti-inflation, register, and fact verification. Diff table, sign-off gate. | "review my copy," "full review" |
 | **ux-web-design-review** | Reviews a page or site against *evidence-backed* UX research (every claim cited), separating what works for humans from what's merely in fashion. | "review my site's UX" |
+| **journey-map** | Builds milestone-based user journey maps (milestones, not screens) with evidence tags and loud ASSUMED flags. FigJam via a Figma MCP connection, or a portable markdown matrix. | "map the journey," "build a journey map" |
 | **copyright-creative-work** | US copyright basics for your own creative work — registration prep, split sheets, what to do before releasing a song or publishing. Educational, not legal advice. | "I'm about to release this — how do I protect it?" |
 
 ## How they work as a team
@@ -29,7 +30,7 @@ A landing page for the pack lives in [`docs/`](docs/index.html). It is built for
 
 ## Install
 
-**As a Claude Code plugin** (all six skills at once):
+**As a Claude Code plugin** (all seven skills at once):
 
 ```
 /plugin marketplace add cabbagecachekid/custom-claude-skills

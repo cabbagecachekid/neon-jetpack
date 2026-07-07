@@ -1,11 +1,11 @@
 ---
 name: using-neon-jetpack
-description: Use when any writing, review, or shipping task begins — reviewing, polishing, or shipping human-facing writing or web pages, or protecting creative work. Routes to the right neon-jetpack skill (line-edit, ai-written-check, cringe-check, full-review, ux-web-design-review, copyright-creative-work) and defines how they chain, so the right depth of review runs in the right order.
+description: Use when any writing, review, research, or shipping task begins — reviewing, polishing, or shipping human-facing writing or web pages, mapping a user journey, or protecting creative work. Routes to the right neon-jetpack skill (line-edit, ai-written-check, cringe-check, full-review, ux-web-design-review, journey-map, copyright-creative-work) and defines how they chain, so the right depth of review runs in the right order.
 ---
 
 # Using neon-jetpack
 
-neon-jetpack is a team of six skills that take a piece of human-facing work from draft to shipped: polish the sentences, strip machine tells, fix the tone, verify the claims, check the page it lives on, and protect it if it's creative work. This skill is the dispatcher — read it, pick the right skill(s), and run them in order.
+neon-jetpack is a team of seven skills that take a piece of human-facing work from draft to shipped: polish the sentences, strip machine tells, fix the tone, verify the claims, check the page it lives on, map the user journey behind it, and protect it if it's creative work. This skill is the dispatcher — read it, pick the right skill(s), and run them in order.
 
 ## The routing table
 
@@ -16,6 +16,7 @@ neon-jetpack is a team of six skills that take a piece of human-facing work from
 | "Does this sound cocky / try-hard / like sucking up?" — tone and positioning | `cringe-check` | Focused |
 | "Review my copy" for anything high-stakes: resume, cover letter, portfolio, case study, proposal, bio | `full-review` | Deep — orchestrates the two checks above plus honesty, register, and fact passes |
 | "Review my site / page / landing page UX" — layout, readability, hierarchy, trust | `ux-web-design-review` | Focused |
+| "Map the journey / build a journey map / chart the experience" — turning research or funnel data into a milestone map | `journey-map` | Focused — interviews for inputs, builds incrementally |
 | Releasing a song, publishing writing or photos, registering copyright, splits with collaborators | `copyright-creative-work` | Focused |
 
 ## How the team chains
@@ -24,6 +25,7 @@ neon-jetpack is a team of six skills that take a piece of human-facing work from
 - **`full-review` is the orchestrator.** It *invokes* `ai-written-check` and `cringe-check` as passes 1 and 4. Never run those two separately and then also run `full-review` — that duplicates work. Either run a focused check alone, or run `full-review` and let it delegate.
 - **Copy going onto a web page gets two lenses.** `ux-web-design-review` judges whether the page is scannable and usable; `full-review` (or the focused checks) judges whether the words are honest and human-sounding. For a page about to go live, run UX first (structure), then copy review (words) — structural changes invalidate copy edits, not the other way around.
 - **Creative work ships with rights handled.** If the deliverable is a song, photo set, or piece of writing headed for release, `copyright-creative-work` runs before publication, after all copy passes are done.
+- **Research artifacts feed copy, then get the copy treatment.** `journey-map` produces the evidence-tagged map; if its narrative summary or readout copy is headed to stakeholders or a portfolio, that prose goes through `line-edit` or `full-review` like any other writing. The map's ASSUMED flags are the same never-inflate rule applied to research claims.
 
 ## Ground rules (apply to every skill in the pack)
 
