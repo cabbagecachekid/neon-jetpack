@@ -1,5 +1,7 @@
 # neon-jetpack
 
+![The neon-jetpack landing page: "Your resume, still yours."](docs/preview.png)
+
 **Free skills that keep AI-assisted writing honest and yours.** Made for anyone using Claude to work on a resume, cover letter, portfolio, proposal, or creative project.
 
 If you've ever asked AI to "improve" your writing and gotten back something that didn't sound like you anymore, or that quietly made your accomplishments bigger than they really were, this pack is for you. It happened to the author while refining a resume: small edits kept creeping in that inflated claims and sanded the voice out, and nobody had approved them. neon-jetpack makes sure the finished writing says what you meant, claims only what's true, and still sounds like you.
