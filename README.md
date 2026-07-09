@@ -22,7 +22,7 @@ A skill is a set of instructions you add to Claude that teaches it how to do a s
 Type these two commands:
 
 ```
-/plugin marketplace add cabbagecachekid/custom-claude-skills
+/plugin marketplace add cabbagecachekid/neon-jetpack
 /plugin install neon-jetpack@neon-jetpack
 ```
 
@@ -75,7 +75,7 @@ There's also a behind-the-scenes skill, **using-neon-jetpack**, that helps Claud
 
 ## The website
 
-A landing page for the pack lives in [`docs/`](docs/index.html). It's built for GitHub Pages (deploy from branch, `/docs` folder) and goes live at `cabbagecachekid.github.io/custom-claude-skills/` once the repo is public and Pages is enabled.
+A landing page for the pack lives in [`docs/`](docs/index.html). It's built for GitHub Pages (deploy from branch, `/docs` folder) and goes live at `cabbagecachekid.github.io/neon-jetpack/` once the repo is public and Pages is enabled.
 
 ## For skill authors
 
