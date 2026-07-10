@@ -58,6 +58,27 @@ Claude picks the right skill (or the right sequence of them) and tells you which
 
 There's also a behind-the-scenes skill, **using-neon-jetpack**, that helps Claude pick the right skill and run them in the right order. You never need to call it yourself.
 
+## How the skills work together
+
+You say what you need; the dispatcher routes it. Solid arrows are the paths you take; dotted arrows are checks that `full-review` runs for you automatically (so you never run those separately).
+
+```mermaid
+flowchart TD
+    YOU([Your draft]) --> R{{"using-neon-jetpack<br>(the dispatcher)"}}
+    R -->|"polish this"| LE[line-edit]
+    R -->|"does this sound like AI?"| AW[ai-written-check]
+    R -->|"does this sound cocky?"| CC[cringe-check]
+    R -->|"review my resume"| FR[full-review]
+    R -->|"review my site's UX"| UX[ux-web-design-review]
+    R -->|"build a journey map"| JM[journey-map]
+    FR -.->|"pass 1"| AW
+    FR -.->|"pass 4"| CC
+    UX -->|"structure settled? words next"| FR
+    JM -->|"readout prose"| FR
+    FR -->|"releasing creative work? rights last"| CW[copyright-creative-work]
+    LE -->|"high stakes? go deeper"| FR
+```
+
 ## The promises every skill keeps
 
 1. **Nothing changes without your okay.** You see the findings first.
