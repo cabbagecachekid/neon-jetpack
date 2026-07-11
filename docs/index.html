@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f2ede4">
 
 <title>neon-jetpack: keep AI-assisted writing honest and yours</title>
 <meta name="description" content="A free pack of Claude skills for job-seekers writing with AI. Polish the sentences, strip the machine tells, catch quiet inflation, and ship copy that still sounds like you.">
 
-<!-- favicon: inline SVG, no separate file -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0e16'/%3E%3Cpath d='M16 5l4 12-4 10-4-10z' fill='%23ffb46b'/%3E%3C/svg%3E">
+<!-- favicon: inline SVG, no separate file. brutalist: hard black square, acid thruster. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230d0d0d'/%3E%3Cpath d='M16 5l4 12-4 10-4-10z' fill='%23e8ff00'/%3E%3C/svg%3E">
 
 <!-- social card. URLs assume GitHub Pages from docs/; update if the path changes. -->
 <meta property="og:type" content="website">
@@ -24,177 +25,196 @@
 <meta name="twitter:description" content="Free Claude skills that polish your resume and cover letter without sanding your voice off or inflating your claims.">
 
 <style>
-  /* ---- palette: night launch ---- */
+  /* ---- palette: brutalist launch (paper ground, black ink, acid + bondi as the
+         color language via solid fills; signal red reserved for the human gate) ---- */
   :root {
-    --bg:        #0a0e16;  /* deep ink blue-black */
-    --panel:     #10182a;  /* card surface */
-    --ink:       #e8ecf4;  /* main text */
-    --muted:     #97a1b4;  /* quiet text (AA on bg) */
-    --hair:      #1d2636;  /* hairlines */
-    --flame:     #ffb46b;  /* apricot neon: the thruster */
-    --flame-hot: #ff8a50;  /* hotter end of the rail */
-    --jet:       #7fe0e0;  /* cool cyan: skill names only */
-    --serif: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
-    --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    --paper:   #f2ede4;  /* off-white page ground */
+    --paper-2: #e8e2d6;  /* card / panel surface */
+    --ink:     #0d0d0d;  /* text, 3px borders, everything structural */
+    --acid:    #e8ff00;  /* primary highlight fill (black text on top) */
+    --bondi:   #0095b6;  /* secondary fill: skill markers, links (black text on top) */
+    --signal:  #ff3c00;  /* accent ONLY: the human sign-off gate */
+    --border:  3px solid var(--ink);
+    --shadow:  6px 6px 0 var(--ink);
+    --mono: "Space Mono", ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    --sans: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    /* display leans on a condensed/heavy grotesque when present, else heavy uppercase system sans */
+    --display: "Bebas Neue", "Anton", "Arial Narrow", Impact, system-ui, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    background: var(--bg);
+    background: var(--paper);
     color: var(--ink);
     font-family: var(--sans);
     -webkit-font-smoothing: antialiased;
     line-height: 1.6;
     overflow-x: hidden;
-    position: relative;
+    overflow-wrap: break-word;
   }
 
-  /* ambient glow: silky, low-opacity, behind everything, breathing slowly */
-  body::before {
-    content: "";
-    position: fixed;
-    left: 50%; top: -30vh;
-    transform: translateX(-50%);
-    width: 120vmax; height: 90vmax;
-    background: radial-gradient(ellipse at center,
-                rgba(255,138,80,0.10) 0%,
-                rgba(255,180,107,0.05) 35%,
-                transparent 65%);
-    filter: blur(12px);
-    animation: breathe 13s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 0;
-  }
-  @keyframes breathe {
-    0%, 100% { opacity: 0.7; }
-    50%      { opacity: 1; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    body::before { animation: none; }
-    .rise { animation: none !important; opacity: 1 !important; }
-  }
+  main { max-width: 48rem; margin: 0 auto; padding: 0 1.25rem; }
 
-  main { position: relative; z-index: 1; max-width: 46rem; margin: 0 auto; padding: 0 1.25rem; }
-
-  section { padding: 4.5rem 0; border-bottom: 1px solid var(--hair); }
+  section { padding: 4rem 0; border-bottom: var(--border); }
   section:last-of-type { border-bottom: none; }
 
-  h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.2; }
-  h2 { font-size: clamp(1.6rem, 4vw, 2.1rem); margin-bottom: 1.1rem; }
+  /* ---- type ---- */
+  h1, h2, h3 { font-family: var(--display); font-weight: 800; line-height: 0.98;
+               text-transform: uppercase; letter-spacing: -0.01em; }
+  h2 { font-size: clamp(2rem, 6.5vw, 3rem); margin-bottom: 1.1rem; }
+  p { max-width: 40rem; }
   p + p { margin-top: 1rem; }
-  a { color: var(--flame); text-underline-offset: 3px; }
-  a:hover { color: var(--flame-hot); }
-  a:focus-visible, button:focus-visible { outline: 2px solid var(--jet); outline-offset: 3px; border-radius: 2px; }
 
+  a { color: var(--ink); font-weight: 700;
+      text-decoration: underline; text-decoration-thickness: 3px;
+      text-decoration-color: var(--bondi); text-underline-offset: 3px; }
+  a:hover { text-decoration-color: var(--signal); }
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--signal); outline-offset: 3px;
+  }
+
+  /* section eyebrow: mono label with a solid color block cap */
   .eyebrow {
-    font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 0.9rem;
+    display: inline-block; font-family: var(--mono); font-weight: 700;
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    background: var(--ink); color: var(--paper);
+    padding: 0.28rem 0.6rem; margin-bottom: 1.2rem;
   }
 
   /* ---- hero ---- */
-  .hero { padding: 7rem 0 5rem; border-bottom: 1px solid var(--hair); }
+  .hero { padding: 3.5rem 0 3.5rem; border-bottom: var(--border); }
   .wordmark {
-    font-family: var(--mono); font-size: 0.85rem; color: var(--flame);
-    letter-spacing: 0.12em; margin-bottom: 2.2rem;
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    font-family: var(--mono); font-weight: 700; font-size: 0.9rem;
+    letter-spacing: 0.06em; margin-bottom: 2rem;
+  }
+  .wordmark::before {
+    content: ""; width: 0.9rem; height: 0.9rem;
+    background: var(--acid); border: 2px solid var(--ink);
   }
   .hero h1 {
-    font-size: clamp(2.3rem, 7vw, 3.6rem);
-    max-width: 15ch;
-    margin-bottom: 1.4rem;
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(3rem, 12vw, 6rem); line-height: 0.92;
+    max-width: 14ch; margin-bottom: 1.6rem;
   }
-  .hero h1 em { font-style: italic; color: var(--flame); }
-  .lede { font-size: 1.12rem; color: var(--muted); max-width: 34rem; }
-  .hero-cta { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center; }
-  .gh-link { font-size: 0.9rem; }
+  .hero h1 mark {
+    background: var(--acid); color: var(--ink);
+    padding: 0 0.15em; box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  }
+  .lede { font-size: 1.1rem; max-width: 36rem; }
+  .hero-cta { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+  .gh-link { font-size: 0.95rem; }
 
   /* command blocks: the paste-able artifact, always mono, always copyable */
   .cmd {
     display: flex; align-items: center; gap: 0.75rem;
-    background: var(--panel); border: 1px solid var(--hair); border-radius: 8px;
-    padding: 0.7rem 0.9rem;
+    background: var(--paper-2); border: var(--border); box-shadow: var(--shadow);
+    padding: 0.75rem 0.9rem;
     font-family: var(--mono); font-size: 0.84rem;
     max-width: 100%;
   }
-  .cmd code { overflow-x: auto; white-space: nowrap; scrollbar-width: thin; scrollbar-color: var(--hair) transparent; }
+  .cmd code { min-width: 0; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
   .cmd code::-webkit-scrollbar { height: 4px; }
-  .cmd code::-webkit-scrollbar-thumb { background: var(--hair); border-radius: 2px; }
+  .cmd code::-webkit-scrollbar-thumb { background: var(--ink); }
   .cmd code::-webkit-scrollbar-track { background: transparent; }
   .cmd--prose code { white-space: normal; overflow-x: visible; line-height: 1.5; }
   .cmd button {
     flex-shrink: 0; margin-left: auto;
-    background: none; border: 1px solid var(--hair); border-radius: 6px;
-    color: var(--muted); font-family: var(--sans); font-size: 0.72rem;
-    padding: 0.25rem 0.6rem; cursor: pointer;
+    background: var(--paper); border: 2px solid var(--ink);
+    color: var(--ink); font-family: var(--mono); font-weight: 700; font-size: 0.72rem;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    padding: 0.3rem 0.65rem; cursor: pointer;
   }
-  .cmd button:hover { color: var(--ink); border-color: var(--muted); }
+  .cmd button:hover { background: var(--ink); color: var(--paper); }
+  .cmd button[data-state="ok"] { background: var(--acid); border-color: var(--ink); color: var(--ink); }
 
-  /* ---- workflow cards with the thruster rail ---- */
+  /* ---- workflow cards: the launch manifest ---- */
   .flow {
-    background: var(--panel); border: 1px solid var(--hair); border-radius: 12px;
-    padding: 1.6rem 1.6rem 1.4rem; margin-top: 1.6rem;
+    background: var(--paper-2); border: var(--border); box-shadow: var(--shadow);
+    padding: 1.6rem 1.6rem 1.5rem; margin-top: 1.6rem;
   }
-  .flow h3 { font-size: 1.25rem; margin-bottom: 0.3rem; }
-  .flow .promise { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.2rem; }
+  .flow h3 { font-size: 1.7rem; margin-bottom: 0.4rem; }
+  .flow .promise { font-size: 0.98rem; margin-bottom: 1.3rem; max-width: 42rem; }
 
-  .rail { list-style: none; position: relative; margin: 0 0 1.2rem; padding-left: 1.6rem; }
+  /* the thruster rail: heavy black spine, square nodes, red node = human gate */
+  .rail { list-style: none; position: relative; margin: 0 0 1.3rem; padding-left: 1.9rem; }
   .rail::before {
-    content: ""; position: absolute; left: 0.42rem; top: 0.5rem; bottom: 0.5rem;
-    width: 2px; border-radius: 2px;
-    background: linear-gradient(to bottom, var(--jet), var(--flame) 55%, var(--flame-hot));
-    opacity: 0.85;
+    content: ""; position: absolute; left: 0.35rem; top: 0.6rem; bottom: 0.6rem;
+    width: 3px; background: var(--ink);
   }
-  .rail li { position: relative; padding: 0.35rem 0; font-size: 0.95rem; }
+  .rail li { position: relative; padding: 0.4rem 0; font-size: 0.96rem; }
   .rail li::before {
-    content: ""; position: absolute; left: -1.42rem; top: 0.88rem;
-    width: 9px; height: 9px; border-radius: 50%;
-    background: var(--bg); border: 2px solid var(--flame);
+    content: ""; position: absolute; left: -1.62rem; top: 0.78rem;
+    width: 11px; height: 11px; background: var(--bondi); border: 2px solid var(--ink);
   }
-  .rail .skill { font-family: var(--mono); font-size: 0.85rem; color: var(--jet); }
-  .rail .does { color: var(--muted); }
+  .rail li:nth-child(even)::before { background: var(--acid); }
+  .rail li.gate::before { background: var(--signal); }
+  .rail li.gate { font-weight: 700; }
+  .rail .skill {
+    font-family: var(--mono); font-weight: 700; font-size: 0.85rem;
+    background: var(--bondi); color: var(--ink); padding: 0.05rem 0.35rem;
+    border: 2px solid var(--ink);
+  }
+  .rail .does { display: inline; }
 
-  .flow .why { font-size: 0.88rem; color: var(--muted); border-left: 2px solid var(--hair); padding-left: 0.9rem; margin-bottom: 1.2rem; }
-  .flow .say-label { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+  .flow .why {
+    font-size: 0.9rem; background: var(--paper);
+    border: 2px solid var(--ink); border-left: 8px solid var(--ink);
+    padding: 0.75rem 0.9rem; margin-bottom: 1.3rem; max-width: 42rem;
+  }
+  .flow .say-label {
+    display: inline-block; font-family: var(--mono); font-weight: 700;
+    font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+    background: var(--signal); color: var(--ink); padding: 0.22rem 0.5rem; margin-bottom: 0.6rem;
+  }
 
   /* ---- skill grid ---- */
   .skills { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.6rem; }
-  .skill-card {
-    border: 1px solid var(--hair); border-radius: 10px; padding: 1.1rem 1.2rem;
+  .skill-card { background: var(--paper-2); border: var(--border); box-shadow: var(--shadow); padding: 1.2rem 1.25rem; }
+  .skill-card h3 {
+    display: inline-block; font-family: var(--mono); font-weight: 700; font-size: 0.9rem;
+    text-transform: none; letter-spacing: 0;
+    background: var(--bondi); color: var(--ink); border: 2px solid var(--ink);
+    padding: 0.1rem 0.4rem; margin-bottom: 0.7rem;
   }
-  .skill-card h3 { font-family: var(--mono); font-size: 0.9rem; font-weight: 400; color: var(--jet); margin-bottom: 0.45rem; }
-  .skill-card p { font-size: 0.9rem; color: var(--muted); }
-  .skill-card .say { display: block; margin-top: 0.6rem; font-size: 0.84rem; color: var(--ink); font-style: italic; }
+  .skill-card p { font-size: 0.9rem; }
+  .skill-card .say { display: block; margin-top: 0.7rem; font-family: var(--mono); font-size: 0.82rem; font-weight: 700; }
 
   /* ---- ground rules ---- */
-  .rules { list-style: none; margin-top: 1.4rem; }
-  .rules li { padding: 0.9rem 0; border-top: 1px solid var(--hair); display: flex; gap: 1rem; }
-  .rules li:last-child { border-bottom: 1px solid var(--hair); }
-  .rules .k { font-family: var(--serif); font-style: italic; color: var(--flame); flex-shrink: 0; width: 11rem; }
-  .rules .v { color: var(--muted); font-size: 0.95rem; }
+  .rules { list-style: none; margin-top: 1.4rem; border-top: var(--border); }
+  .rules li { padding: 1rem 0; border-bottom: var(--border); display: flex; gap: 1.2rem; }
+  .rules .k {
+    font-family: var(--display); font-weight: 800; text-transform: uppercase;
+    letter-spacing: -0.01em; font-size: 1.35rem; line-height: 1;
+    flex-shrink: 0; width: 11rem;
+  }
+  .rules .k span { background: var(--acid); padding: 0 0.15em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .rules .v { font-size: 0.96rem; }
 
   /* ---- install ---- */
   .install-step { margin-top: 1.4rem; }
-  .install-step p { font-size: 0.95rem; color: var(--muted); margin-bottom: 0.6rem; }
-  .install-step .cmd { margin-top: 0.4rem; }
+  .install-step p { font-size: 0.96rem; margin-bottom: 0.6rem; }
+  .install-step code { font-family: var(--mono); background: var(--paper-2); border: 1px solid var(--ink); padding: 0 0.25rem; }
+  .install-step .cmd code { border: none; background: none; padding: 0; }
+  .install-step .cmd { margin-top: 0.55rem; }
 
-  footer {
-    padding: 3rem 0 4rem; text-align: center;
-    color: var(--muted); font-size: 0.82rem;
+  footer { padding: 3rem 0 4rem; font-size: 0.84rem; }
+  footer p + p { margin-top: 0.5rem; }
+
+  /* ---- restrained load-in (reduced-motion respected) ---- */
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .rise { opacity: 0; animation: rise 0.6s cubic-bezier(0.2,0.7,0.2,1) forwards; }
+  .d2 { animation-delay: 0.1s; } .d3 { animation-delay: 0.2s; }
+  @media (prefers-reduced-motion: reduce) {
+    .rise { animation: none !important; opacity: 1 !important; }
   }
-  footer a { color: var(--muted); }
-  footer a:hover { color: var(--ink); }
-
-  /* ---- load-in ---- */
-  @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-  .rise { opacity: 0; animation: rise 0.8s cubic-bezier(0.2,0.7,0.2,1) forwards; }
-  .d2 { animation-delay: 0.12s; } .d3 { animation-delay: 0.24s; }
 
   @media (max-width: 640px) {
     .skills { grid-template-columns: 1fr; }
-    .rules li { flex-direction: column; gap: 0.2rem; }
+    .rules li { flex-direction: column; gap: 0.35rem; }
     .rules .k { width: auto; }
-    .hero { padding-top: 5rem; }
+    :root { --shadow: 4px 4px 0 var(--ink); }
   }
 </style>
 </head>
@@ -205,7 +225,7 @@
   <!-- HERO -->
   <header class="hero">
     <p class="wordmark rise">neon-jetpack</p>
-    <h1 class="rise d2">Your resume, <em>still yours.</em></h1>
+    <h1 class="rise d2">Your resume, <mark>still yours.</mark></h1>
     <p class="lede rise d3">A free pack of Claude skills for people writing resumes, cover letters, and portfolios with AI. It polishes your drafts, flags the phrases that read as machine-written, and refuses to quietly inflate a single claim.</p>
     <div class="hero-cta rise d3">
       <div class="cmd">
@@ -236,7 +256,7 @@
       <ol class="rail">
         <li><span class="skill">line-edit</span> <span class="does">cleans grammar, wordiness, and awkward sentences</span></li>
         <li><span class="skill">full-review</span> <span class="does">runs six passes: AI tells, tone, honesty, register, facts</span></li>
-        <li><span class="does">You sign off on a diff table before anything changes</span></li>
+        <li class="gate"><span class="does">You sign off on a diff table before anything changes</span></li>
       </ol>
       <p class="why">Why this order: line-edit is a light polish that never touches tone, so it goes first on a rough draft. Full-review already includes the AI-tells and tone checks, so you never run those separately. One clean pass, one deep pass, done.</p>
       <p class="say-label">Say this to Claude</p>
@@ -248,7 +268,7 @@
       <p class="promise">A page reviewed for structure first and words second, so your copy edits survive.</p>
       <ol class="rail">
         <li><span class="skill">ux-web-design-review</span> <span class="does">audits hierarchy, readability, and trust, with every claim cited</span></li>
-        <li><span class="does">You fix the structural issues it finds</span></li>
+        <li class="gate"><span class="does">You fix the structural issues it finds</span></li>
         <li><span class="skill">full-review</span> <span class="does">then works over the final copy in place</span></li>
       </ol>
       <p class="why">Why this order: if the UX pass tells you to cut a section or reorder the page, any copy edits you made earlier are wasted. Structure first, words second. The reverse order costs you a rewrite.</p>
@@ -273,7 +293,7 @@
       <p class="promise">Finished copy plus a plain-English walkthrough of US copyright basics before you hit publish.</p>
       <ol class="rail">
         <li><span class="skill">line-edit</span> <span class="does">or</span> <span class="skill">full-review</span><span class="does">, whichever your draft needs</span></li>
-        <li><span class="does">You sign off on the final text</span></li>
+        <li class="gate"><span class="does">You sign off on the final text</span></li>
         <li><span class="skill">copyright-creative-work</span> <span class="does">covers registration, notice, and licensing questions</span></li>
       </ol>
       <p class="why">Why this order: the copyright pass is educational and assumes the work is final. Run it after the copy is locked, so the answers apply to what you actually publish. It is a primer, not legal advice, and the skill says so up front.</p>
@@ -330,10 +350,10 @@
     <p class="eyebrow">The contract</p>
     <h2>Four rules every skill obeys.</h2>
     <ul class="rules">
-      <li><span class="k">Sign-off first</span><span class="v">Findings are presented before anything is rewritten. Your words change only when you approve the change.</span></li>
-      <li><span class="k">Never inflate</span><span class="v">If an edit would make a claim bigger than the stated truth, the skill stops and asks instead of polishing the inflation into a fact.</span></li>
-      <li><span class="k">Preserve voice</span><span class="v">A rough, specific sentence beats a smooth, generic one. These skills subtract noise; they do not add polish-paste.</span></li>
-      <li><span class="k">Report the gaps</span><span class="v">Every review ends by naming which passes ran and which did not, so &ldquo;reviewed&rdquo; never overstates coverage.</span></li>
+      <li><span class="k"><span>Sign-off first</span></span><span class="v">Findings are presented before anything is rewritten. Your words change only when you approve the change.</span></li>
+      <li><span class="k"><span>Never inflate</span></span><span class="v">If an edit would make a claim bigger than the stated truth, the skill stops and asks instead of polishing the inflation into a fact.</span></li>
+      <li><span class="k"><span>Preserve voice</span></span><span class="v">A rough, specific sentence beats a smooth, generic one. These skills subtract noise; they do not add polish-paste.</span></li>
+      <li><span class="k"><span>Report the gaps</span></span><span class="v">Every review ends by naming which passes ran and which did not, so &ldquo;reviewed&rdquo; never overstates coverage.</span></li>
     </ul>
   </section>
 
@@ -352,7 +372,7 @@
   </section>
 
   <footer>
-    <p>MIT license · <a href="https://github.com/cabbagecachekid/neon-jetpack">Source on GitHub</a> · By <a href="https://caitlinnielsonux.com">Caitlin Nielson</a></p>
+    <p>MIT license &middot; <a href="https://github.com/cabbagecachekid/neon-jetpack">Source on GitHub</a> &middot; By <a href="https://caitlinnielsonux.com">Caitlin Nielson</a></p>
     <p>No analytics, no trackers, no signup. It is a static page about free software.</p>
   </footer>
 
@@ -378,6 +398,7 @@
       var text = btn.parentElement.querySelector("code").textContent;
       function done(ok) {
         btn.textContent = ok ? "Copied" : "Press ⌘C";
+        btn.setAttribute("data-state", ok ? "ok" : "err");
         if (!ok) {
           var range = document.createRange();
           range.selectNodeContents(btn.parentElement.querySelector("code"));
@@ -385,7 +406,7 @@
           sel.removeAllRanges();
           sel.addRange(range);
         }
-        setTimeout(function () { btn.textContent = "Copy"; }, 1600);
+        setTimeout(function () { btn.textContent = "Copy"; btn.removeAttribute("data-state"); }, 1600);
       }
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(function () { done(true); },
