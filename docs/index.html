@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f2ede4">
+<meta name="theme-color" content="#0b0b0d">
 
 <title>neon-jetpack: keep AI-assisted writing honest and yours</title>
 <meta name="description" content="A free pack of Claude skills for job-seekers writing with AI. Polish the sentences, strip the machine tells, catch quiet inflation, and ship copy that still sounds like you.">
 
-<!-- favicon: inline SVG, no separate file. brutalist: hard black square, acid thruster. -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230d0d0d'/%3E%3Cpath d='M16 5l4 12-4 10-4-10z' fill='%23e8ff00'/%3E%3C/svg%3E">
+<!-- favicon: inline SVG, no separate file. black square, acid thruster. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0b0d'/%3E%3Cpath d='M16 5l4 12-4 10-4-10z' fill='%23e8ff00'/%3E%3C/svg%3E">
 
 <!-- social card. URLs assume GitHub Pages from docs/; update if the path changes. -->
 <meta property="og:type" content="website">
@@ -25,27 +25,27 @@
 <meta name="twitter:description" content="Free Claude skills that polish your resume and cover letter without sanding your voice off or inflating your claims.">
 
 <style>
-  /* ---- palette: brutalist launch (paper ground, black ink, acid + bondi as the
-         color language via solid fills; signal red reserved for the human gate) ---- */
+  /* ---- palette: neon night (black ground, off-white text; acid is the star
+         neon, bondi the secondary neon, signal red for rare pops) ---- */
   :root {
-    --paper:   #f2ede4;  /* off-white page ground */
-    --paper-2: #e8e2d6;  /* card / panel surface */
-    --ink:     #0d0d0d;  /* text, 3px borders, everything structural */
-    --acid:    #e8ff00;  /* primary highlight fill (black text on top) */
-    --bondi:   #0095b6;  /* secondary fill: skill markers, links (black text on top) */
-    --signal:  #ff3c00;  /* accent ONLY: the human sign-off gate */
+    --bg:      #0b0b0d;  /* near-black ground, faint cool bias */
+    --panel:   #151519;  /* lifted card surface */
+    --ink:     #f4f3ee;  /* off-white text + structural borders */
+    --muted:   #b6b6c0;  /* quiet text (AA on bg) */
+    --acid:    #e8ff00;  /* primary neon */
+    --bondi:   #14bbdf;  /* secondary neon (bondi, brightened for the dark) */
+    --signal:  #ff3c00;  /* red pops */
     --border:  3px solid var(--ink);
-    --shadow:  6px 6px 0 var(--ink);
+    --shadow:  6px 6px 0 var(--bondi);
     --mono: "Space Mono", ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
     --sans: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-    /* display leans on a condensed/heavy grotesque when present, else heavy uppercase system sans */
     --display: "Bebas Neue", "Anton", "Arial Narrow", Impact, system-ui, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    background: var(--paper);
+    background: var(--bg);
     color: var(--ink);
     font-family: var(--sans);
     -webkit-font-smoothing: antialiased;
@@ -74,16 +74,24 @@
     outline: 3px solid var(--signal); outline-offset: 3px;
   }
 
-  /* section eyebrow: mono label with a solid color block cap */
+  /* section eyebrow: mono label in a neon acid tab */
   .eyebrow {
     display: inline-block; font-family: var(--mono); font-weight: 700;
     font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
-    background: var(--ink); color: var(--paper);
+    background: var(--acid); color: var(--bg);
     padding: 0.28rem 0.6rem; margin-bottom: 1.2rem;
   }
 
   /* ---- hero ---- */
-  .hero { padding: 3.5rem 0 3.5rem; border-bottom: var(--border); }
+  .hero { position: relative; padding: 3.5rem 0 3.5rem; border-bottom: var(--border); }
+  /* one restrained neon-night glow behind the headline */
+  .hero::before {
+    content: ""; position: absolute; z-index: 0; pointer-events: none;
+    left: -10%; top: 12%; width: 70%; height: 60%;
+    background: radial-gradient(closest-side, rgba(232,255,0,0.13), transparent 70%);
+    filter: blur(10px);
+  }
+  .hero > * { position: relative; z-index: 1; }
   .wordmark {
     display: inline-flex; align-items: center; gap: 0.55rem;
     font-family: var(--mono); font-weight: 700; font-size: 0.9rem;
@@ -99,45 +107,46 @@
     max-width: 14ch; margin-bottom: 1.6rem;
   }
   .hero h1 mark {
-    background: var(--acid); color: var(--ink);
+    background: var(--acid); color: var(--bg);
     padding: 0 0.15em; box-decoration-break: clone; -webkit-box-decoration-break: clone;
+    box-shadow: 0 0 26px rgba(232,255,0,0.45);
   }
-  .lede { font-size: 1.1rem; max-width: 36rem; }
+  .lede { font-size: 1.1rem; max-width: 36rem; color: var(--muted); }
   .hero-cta { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
   .gh-link { font-size: 0.95rem; }
 
   /* command blocks: the paste-able artifact, always mono, always copyable */
   .cmd {
     display: flex; align-items: center; gap: 0.75rem;
-    background: var(--paper-2); border: var(--border); box-shadow: var(--shadow);
+    background: var(--panel); border: var(--border); box-shadow: var(--shadow);
     padding: 0.75rem 0.9rem;
     font-family: var(--mono); font-size: 0.84rem;
     max-width: 100%;
   }
-  .cmd code { min-width: 0; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
+  .cmd code { min-width: 0; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; scrollbar-color: var(--muted) transparent; }
   .cmd code::-webkit-scrollbar { height: 4px; }
-  .cmd code::-webkit-scrollbar-thumb { background: var(--ink); }
+  .cmd code::-webkit-scrollbar-thumb { background: var(--muted); }
   .cmd code::-webkit-scrollbar-track { background: transparent; }
   .cmd--prose code { white-space: normal; overflow-x: visible; line-height: 1.5; }
   .cmd button {
     flex-shrink: 0; margin-left: auto;
-    background: var(--paper); border: 2px solid var(--ink);
+    background: transparent; border: 2px solid var(--ink);
     color: var(--ink); font-family: var(--mono); font-weight: 700; font-size: 0.72rem;
     text-transform: uppercase; letter-spacing: 0.04em;
     padding: 0.3rem 0.65rem; cursor: pointer;
   }
-  .cmd button:hover { background: var(--ink); color: var(--paper); }
-  .cmd button[data-state="ok"] { background: var(--acid); border-color: var(--ink); color: var(--ink); }
+  .cmd button:hover { background: var(--ink); color: var(--bg); }
+  .cmd button[data-state="ok"] { background: var(--acid); border-color: var(--acid); color: var(--bg); }
 
   /* ---- workflow cards: the launch manifest ---- */
   .flow {
-    background: var(--paper-2); border: var(--border); box-shadow: var(--shadow);
+    background: var(--panel); border: var(--border); box-shadow: var(--shadow);
     padding: 1.6rem 1.6rem 1.5rem; margin-top: 1.6rem;
   }
   .flow h3 { font-size: 1.7rem; margin-bottom: 0.4rem; }
-  .flow .promise { font-size: 0.98rem; margin-bottom: 1.3rem; max-width: 42rem; }
+  .flow .promise { font-size: 0.98rem; margin-bottom: 1.3rem; max-width: 42rem; color: var(--muted); }
 
-  /* the thruster rail: heavy black spine, square nodes, red node = human gate */
+  /* the thruster rail: heavy off-white spine, square neon nodes, red = human gate */
   .rail { list-style: none; position: relative; margin: 0 0 1.3rem; padding-left: 1.9rem; }
   .rail::before {
     content: ""; position: absolute; left: 0.35rem; top: 0.6rem; bottom: 0.6rem;
@@ -153,33 +162,33 @@
   .rail li.gate { font-weight: 700; }
   .rail .skill {
     font-family: var(--mono); font-weight: 700; font-size: 0.85rem;
-    background: var(--bondi); color: var(--ink); padding: 0.05rem 0.35rem;
+    background: var(--bondi); color: var(--bg); padding: 0.05rem 0.35rem;
     border: 2px solid var(--ink);
   }
   .rail .does { display: inline; }
 
   .flow .why {
-    font-size: 0.9rem; background: var(--paper);
-    border: 2px solid var(--ink); border-left: 8px solid var(--ink);
+    font-size: 0.9rem; color: var(--muted); background: var(--bg);
+    border: 2px solid var(--ink); border-left: 8px solid var(--bondi);
     padding: 0.75rem 0.9rem; margin-bottom: 1.3rem; max-width: 42rem;
   }
   .flow .say-label {
     display: inline-block; font-family: var(--mono); font-weight: 700;
     font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
-    background: var(--signal); color: var(--ink); padding: 0.22rem 0.5rem; margin-bottom: 0.6rem;
+    background: var(--signal); color: var(--bg); padding: 0.22rem 0.5rem; margin-bottom: 0.6rem;
   }
 
   /* ---- skill grid ---- */
   .skills { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.6rem; }
-  .skill-card { background: var(--paper-2); border: var(--border); box-shadow: var(--shadow); padding: 1.2rem 1.25rem; }
+  .skill-card { background: var(--panel); border: var(--border); box-shadow: var(--shadow); padding: 1.2rem 1.25rem; }
   .skill-card h3 {
     display: inline-block; font-family: var(--mono); font-weight: 700; font-size: 0.9rem;
     text-transform: none; letter-spacing: 0;
-    background: var(--bondi); color: var(--ink); border: 2px solid var(--ink);
+    background: var(--bondi); color: var(--bg); border: 2px solid var(--ink);
     padding: 0.1rem 0.4rem; margin-bottom: 0.7rem;
   }
-  .skill-card p { font-size: 0.9rem; }
-  .skill-card .say { display: block; margin-top: 0.7rem; font-family: var(--mono); font-size: 0.82rem; font-weight: 700; }
+  .skill-card p { font-size: 0.9rem; color: var(--muted); }
+  .skill-card .say { display: block; margin-top: 0.7rem; font-family: var(--mono); font-size: 0.82rem; font-weight: 700; color: var(--ink); }
 
   /* ---- ground rules ---- */
   .rules { list-style: none; margin-top: 1.4rem; border-top: var(--border); }
@@ -189,17 +198,18 @@
     letter-spacing: -0.01em; font-size: 1.35rem; line-height: 1;
     flex-shrink: 0; width: 11rem;
   }
-  .rules .k span { background: var(--acid); padding: 0 0.15em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-  .rules .v { font-size: 0.96rem; }
+  .rules .k span { background: var(--acid); color: var(--bg); padding: 0 0.15em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .rules .v { font-size: 0.96rem; color: var(--muted); }
 
   /* ---- install ---- */
   .install-step { margin-top: 1.4rem; }
   .install-step p { font-size: 0.96rem; margin-bottom: 0.6rem; }
-  .install-step code { font-family: var(--mono); background: var(--paper-2); border: 1px solid var(--ink); padding: 0 0.25rem; }
+  .install-step > p { color: var(--muted); }
+  .install-step code { font-family: var(--mono); background: var(--panel); border: 1px solid var(--ink); padding: 0 0.25rem; color: var(--ink); }
   .install-step .cmd code { border: none; background: none; padding: 0; }
   .install-step .cmd { margin-top: 0.55rem; }
 
-  footer { padding: 3rem 0 4rem; font-size: 0.84rem; }
+  footer { padding: 3rem 0 4rem; font-size: 0.84rem; color: var(--muted); }
   footer p + p { margin-top: 0.5rem; }
 
   /* ---- restrained load-in (reduced-motion respected) ---- */
@@ -214,7 +224,7 @@
     .skills { grid-template-columns: 1fr; }
     .rules li { flex-direction: column; gap: 0.35rem; }
     .rules .k { width: auto; }
-    :root { --shadow: 4px 4px 0 var(--ink); }
+    :root { --shadow: 4px 4px 0 var(--bondi); }
   }
 </style>
 </head>
@@ -372,7 +382,7 @@
   </section>
 
   <footer>
-    <p>MIT license &middot; <a href="https://github.com/cabbagecachekid/neon-jetpack">Source on GitHub</a> &middot; By <a href="https://caitlinnielsonux.com">Caitlin Nielson</a></p>
+    <p>MIT license &middot; <a href="https://github.com/cabbagecachekid/neon-jetpack">Source on GitHub</a> &middot; By <a href="https://github.com/cabbagecachekid">cabbagecachekid</a></p>
     <p>No analytics, no trackers, no signup. It is a static page about free software.</p>
   </footer>
 
