@@ -4,7 +4,7 @@
 
 **Free skills that keep AI-assisted writing honest and yours.** Made for anyone using Claude to work on a resume, cover letter, portfolio, proposal, or creative project.
 
-If you've ever asked AI to "improve" your writing and gotten back something that didn't sound like you anymore, or that quietly made your accomplishments bigger than they really were, this pack is for you. It happened to the author while refining a resume: small edits kept creeping in that inflated claims and sanded the voice out, and nobody had approved them. neon-jetpack makes sure the finished writing says what you meant, claims only what's true, and still sounds like you.
+If you've ever asked AI to "improve" your writing and gotten back something that didn't sound like you anymore, or that silently made your accomplishments bigger than they really were, this pack is for you. It happened to the author while refining a resume: small edits kept creeping in that inflated claims and sanded the voice out, and nobody had approved them. neon-jetpack makes sure the finished writing says what you meant, claims only what's true, and still sounds like you.
 
 ## What's a "skill"?
 
@@ -57,6 +57,10 @@ Claude picks the right skill (or the right sequence of them) and tells you which
 | **copyright-creative-work** | Walks you through US copyright basics before you release a song, photos, or writing: registration, split sheets, what to do first. Educational, not legal advice. | "how do I protect this before I post it?" |
 
 There's also a behind-the-scenes skill, **using-neon-jetpack**, that helps Claude pick the right skill and run them in the right order. You never need to call it yourself.
+
+## Registers and profiles (v0.2)
+
+The three writing-honesty skills (ai-written-check, cringe-check, full-review) are shared with the smaller [red-pen](https://github.com/cabbagecachekid/red-pen) pack and are the same files. As of v0.2 they can be calibrated per kind of writing: a **register** file says which way AI editing damages that kind of artifact (résumés inflate; editorials soften), and an optional one-page **profile** in your writing folder records your voice and names your register. With neither, everything runs exactly as before: the résumé calibration, `job-seeker`. See red-pen's README for the full explanation; the `registers/` folder and `profile.template.md` here are the same files.
 
 ## How the skills work together
 

@@ -36,9 +36,17 @@ Governing principle: **users decide whether to trust a site in seconds, largely 
 
 - **Claim:** Good error messages say what happened, in plain language, and how to recover; good empty states orient a new user instead of showing a void.
 - **Mechanism:** Failure moments are where trust is most fragile. A blaming, cryptic, or dead-end state signals the system doesn't have the user's back; a helpful one signals competence and care.
-- **Source:** Nielsen, J., *10 Usability Heuristics*, heuristic #9 ("Help users recognize, diagnose, and recover from errors") and #5 (error prevention). https://www.nngroup.com/articles/ten-usability-heuristics/
+- **Source:** Nielsen, J., *10 Usability Heuristics*, heuristic #9 ("Help users recognize, diagnose, and recover from errors") and #5 (error prevention). https://www.nngroup.com/articles/ten-usability-heuristics/ · Detailed guidelines: #4a below.
 - **Applies:** forms, search-no-results, first-run empty screens, 404s, failed actions.
 - **Doesn't / input caveat:** often not visible in a static screenshot of the happy path — note that you can't assess error states without seeing them, and recommend checking them.
+
+## 4a. Error-message guidelines (the detailed checklist)
+
+- **Claim:** Effective error messages follow specific rules in three groups. **Visibility:** display the error near its source; use noticeable, redundant indicators (bold, high-contrast red — never color alone, for accessibility); match presentation to severity (banner/toast for warnings, modal only for critical blockers); don't flag exploratory input as an error prematurely. **Communication:** plain language, no error codes up front; be specific and concise about what went wrong; offer a constructive next step, not just a diagnosis; keep a positive, non-blaming tone (avoid "invalid," "incorrect," "you must/need to"). **Efficiency:** safeguard against predictable mistakes before they happen; preserve the user's input; make the correction as close to one-click/one-tap as possible (e.g., actionable links, `tel:` for phone numbers); educate concisely.
+- **Mechanism:** Errors interrupt a task the user still wants to finish. Every rule reduces either the cost of noticing (visibility), understanding (communication), or recovering (efficiency). Blame-toned wording adds a social cost on top, which is why it disproportionately damages trust.
+- **Source:** Neusesser, T. & Sunwall, E. (2023), *Error-Message Guidelines*, NNG. https://www.nngroup.com/articles/error-message-guidelines/ — the modern, detailed successor to heuristic #9 above.
+- **Applies:** any error, blocked, or failure state — form validation, system faults, third-party outages, states the product can't fix itself.
+- **Doesn't / caveat:** two review checks that recur in practice and are easy to miss: **(1) CTA/content mismatch** — the constructive next step named in the body must be the state's primary action; a button pointing at a remedy the copy just disclaimed (e.g., "support can't fix this" above a Contact Support button) fails the constructive-solution rule even when every sentence is individually fine. **(2)** when the remedy lives with a third party, give the user the direct, actionable route to that party (real digits, not a vanity phone number; a link, not a name). Tone rules apply per-sentence, so audit the whole state — headline, body, and button labels together.
 
 ## 5. Honest affordances and signifiers
 
@@ -53,6 +61,6 @@ Governing principle: **users decide whether to trust a site in seconds, largely 
 ## How to apply this dimension
 
 - **Screenshot / URL:** assess #1, #2, #5 (look, contact/links present, affordance clarity), and #3 if social proof is shown.
-- **Copy/text:** assess the honesty/specificity of #3 (social proof claims) and the tone of #4 (error/empty copy) if provided.
+- **Copy/text:** assess the honesty/specificity of #3 (social proof claims) and the tone of #4 (error/empty copy) if provided; when the input IS an error/blocked state, run the full #4a checklist including the CTA/content-mismatch check.
 - **Always flag what you couldn't see:** error states, form-failure handling, and link health usually aren't visible in one screenshot — name them as unassessed.
 - Cite Stanford as **(2002)** every time, with the "directional, dated specifics" caveat.
