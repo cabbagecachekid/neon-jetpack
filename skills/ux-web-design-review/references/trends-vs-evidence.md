@@ -61,7 +61,7 @@ How to tag:
 
 Not every trend is bad. Tag these [Convention] *supported by* [Evidence], and don't ding them:
 
-- **Generous whitespace / breathing room** — aligns with grouping and comprehension (`visual-hierarchy.md` #4). (Caitlin's own taste leans this way; it's also defensible on evidence.)
+- **Generous whitespace / breathing room** — aligns with grouping and comprehension (`visual-hierarchy.md` #4). (A taste call as much as a finding, but defensible on evidence.)
 - **Large, legible type and big tap targets** — aligns with readability and Fitts's law (`visual-hierarchy.md` #5).
 - **Sticky/visible primary navigation** — supports recognition over recall and findability.
 - **Skeleton screens / progress feedback** — supports the "visibility of system status" heuristic.

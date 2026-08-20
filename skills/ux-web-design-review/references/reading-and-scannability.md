@@ -55,7 +55,7 @@ A note on the headline statistics: the famous "79% of users scan, 16% read word-
 - **Source:** Nielsen Norman Group, *Plain Language Is for Everyone, Even Experts* (2017); grounded in Redish, J., *Letting Go of the Words* (2nd ed., 2012). https://www.nngroup.com/articles/plain-language-experts/
 - **Jargon decision framework** (Moran, K. (2023), *Dealing with Technical or Professional Jargon*, NNG — no hard stats, a current qualitative source): for any specialized term, ask **(1) does the audience know it? (2) how important is it?** Then keep it (known + important), **gloss** it as `plain-language term (technical term)` — or the reverse when most readers know it — or replace it (unfamiliar + not essential). Experts still want the precise term of art; the framework targets *unfamiliar* jargon, not all domain vocabulary. https://www.nngroup.com/articles/technical-jargon/
 - **Applies:** all functional web copy, including technical and B2B.
-- **Doesn't:** precise terms of art that have no plain equivalent — keep the right word, just don't pad around it. (This mirrors Caitlin's standing rule: strip AI fluff, keep industry vocabulary.)
+- **Doesn't:** precise terms of art that have no plain equivalent — keep the right word, just don't pad around it. (Standing rule: strip the AI fluff, keep the industry vocabulary.)
 
 ## 7. Line length (measure)
 
